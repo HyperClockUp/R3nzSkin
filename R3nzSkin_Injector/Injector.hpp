@@ -7,6 +7,7 @@
 #include <vector>
 
 using namespace std::chrono_literals;
+// 用来存放所有的进程id
 using proclist_t = std::vector<std::uint32_t>;
 
 NTSTATUS NTAPI NtCreateThreadEx(PHANDLE, ACCESS_MASK, LPVOID, HANDLE, LPTHREAD_START_ROUTINE, LPVOID, BOOL, SIZE_T, SIZE_T, SIZE_T, LPVOID);
