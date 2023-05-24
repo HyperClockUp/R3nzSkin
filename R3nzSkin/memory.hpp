@@ -25,13 +25,18 @@ public:
 	std::uint64_t* offset;
 };
 
+// 内存类，用于记录游戏内存地址
 class Memory {
 public:
+	// 搜索游戏内存地址
 	void Search(bool gameClient = true);
 
+	// 游戏基址
 	std::uintptr_t base;
+	// 窗体句柄
 	HWND window;
 
+	// 游戏客户端状态
 	GameClient* client;
 	AIBaseCommon* localPlayer;
 	ManagerTemplate<AIHero>* heroList;

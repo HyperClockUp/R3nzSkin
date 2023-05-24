@@ -11,6 +11,7 @@
 
 class CheatManager {
 public:
+	// ³õÊ¼»¯
 	void start() noexcept
 	{
 		this->hooks = std::make_unique<Hooks>();

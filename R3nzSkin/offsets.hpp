@@ -2,8 +2,11 @@
 
 #include <cstdint>
 
+// 用于记录游戏内各数值的偏移量
 namespace offsets {
+	// 游戏内对象基址和偏移量
 	namespace GameObject {
+		// 基址
 		namespace VTable {
 			enum {
 				IsLaneMinion = 0xE3, // 48 8B 06 48 8B CE FF 90 ? ? 00 00 48 8B ? 24 ? ? 00 00
@@ -14,7 +17,9 @@ namespace offsets {
 			};
 		};
 		enum {
+			// 队伍偏移量
 			Team = 0x3C,
+			// ID偏移量
 			Name = 0x60
 		};
 	};
@@ -30,7 +35,9 @@ namespace offsets {
 	};
 
 	namespace AIBaseCommon {
+		// 人物皮肤偏移量
 		inline std::uint64_t CharacterDataStack{ 0 };
+		// 皮肤ID偏移量
 		inline std::uint64_t SkinId{ 0 };
 	};
 

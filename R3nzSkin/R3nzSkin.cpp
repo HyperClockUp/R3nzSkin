@@ -16,15 +16,19 @@
 
 #include "SDK/GameState.hpp"
 
+// 隐藏线程
 bool WINAPI HideThread(const HANDLE hThread) noexcept
 {
 	__try {
+		// 定义类型
 		using FnSetInformationThread = NTSTATUS(NTAPI*)(HANDLE ThreadHandle, UINT ThreadInformationClass, PVOID ThreadInformation, ULONG ThreadInformationLength);
+		// 从ntdll.dll中获取NtSetInformationThread函数地址
 		const auto NtSetInformationThread{ reinterpret_cast<FnSetInformationThread>(::GetProcAddress(::GetModuleHandle(L"ntdll.dll"), "NtSetInformationThread")) };
 
 		if (!NtSetInformationThread)
 			return false;
 
+		// 0x11u 
 		if (const auto status{ NtSetInformationThread(hThread, 0x11u, nullptr, 0ul) }; status == 0x00000000)
 			return true;
 	} __except (TRUE) {
